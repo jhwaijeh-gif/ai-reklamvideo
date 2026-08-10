@@ -111,6 +111,33 @@
   .feat .row dd{font-size:15.5px;color:var(--text);line-height:1.6;}
   .feat .row dd b{color:var(--ink);font-weight:600;}
 
+  /* VIDEO */
+  .vid{position:relative;background:#0d0d0f;overflow:hidden;border-radius:14px;border:1px solid var(--border);margin-top:18px;}
+  .vid video{width:100%;height:100%;display:block;object-fit:cover;}
+  .vid.wide{aspect-ratio:16/9;}
+  .vid.portrait{aspect-ratio:676/900;max-width:300px;margin-left:auto;margin-right:auto;}
+
+  /* BEFORE / AFTER */
+  .ba{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .ba figure{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface);margin:0;}
+  .ba img{width:100%;display:block;}
+  .ba figcaption{font-family:var(--mono);font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;padding:9px 11px;}
+  .arrow-down{display:flex;align-items:center;justify-content:center;gap:9px;margin:18px 0 0;
+    font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--cloth-tx);}
+  .arrow-down svg{width:18px;height:18px;}
+
+  /* PROMPT BOX */
+  .prompt{margin-top:18px;border:1px solid #2a2926;border-radius:12px;overflow:hidden;background:#1b1a18;}
+  .prompt-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 14px;
+    background:#232220;border-bottom:1px solid rgba(255,255,255,0.06);}
+  .prompt-bar .lbl{font-family:var(--mono);font-weight:600;font-size:11px;letter-spacing:0.09em;text-transform:uppercase;color:#c9c5bf;}
+  .prompt-copy{font-family:var(--mono);font-weight:600;font-size:11px;color:#e9e6e1;background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.14);border-radius:7px;padding:6px 12px;cursor:pointer;transition:background .2s ease;flex:0 0 auto;}
+  .prompt-copy:hover{background:rgba(255,255,255,0.18);}
+  .prompt-copy.ok{color:#9fe0a6;border-color:rgba(159,224,166,0.4);}
+  .prompt pre{margin:0;padding:18px;overflow:auto;max-height:340px;font-family:var(--mono);font-size:13px;line-height:1.7;
+    color:#e7e4df;white-space:pre-wrap;word-break:break-word;}
+
   .soon{background:var(--surface);border:1px dashed #CBC9C5;border-radius:14px;padding:26px 28px;margin-top:26px;}
   .soon .st{font-family:var(--mono);font-weight:600;font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;
     color:var(--cloth-tx);background:var(--cloth-bg);border-radius:9999px;padding:5px 11px;display:inline-block;}
@@ -247,7 +274,17 @@
           <h3>Referensbilden</h3>
           <p>AI:n måste veta hur din produkt <b>faktiskt</b> ser ut. Ge den tydliga bilder som visar produkten <b>från flera vinklar</b>, inte bara en snygg bild framifrån.</p>
           <p>Ju bättre referensbilder, desto mindre hittar AI:n på. Suddiga eller mörka bilder ger en produkt som inte riktigt är din.</p>
-          <div class="note blue"><span class="lb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span><span>Ska en <b>specifik person</b> vara med behöver du ett character sheet, alltså ett uppsättning bilder som låser hur personen ser ut. Annars byter ansiktet utseende mellan klippen.</span></div>
+          <p>Så här såg det ut när jag gjorde klippet i videon. Två vanliga mobilbilder på en piké, fram och bak:</p>
+          <div class="ba">
+            <figure><img src="images/ref-front.jpg" alt="Mobilbild på pikén framifrån" loading="lazy"><figcaption>Referens 1 · framifrån</figcaption></figure>
+            <figure><img src="images/ref-back.jpg" alt="Mobilbild på pikén bakifrån" loading="lazy"><figcaption>Referens 2 · bakifrån</figcaption></figure>
+          </div>
+          <div class="arrow-down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg> blev den här videon</div>
+          <div class="vid portrait">
+            <video src="images/tshirt.mp4" poster="images/tshirt-poster.jpg" muted loop playsinline preload="none"></video>
+          </div>
+          <p style="margin-top:14px">Inget studiobygge, ingen fotograf. <b>Två bilder in, en video ut.</b></p>
+          <div class="note blue"><span class="lb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span><span>Ska en <b>specifik person</b> vara med behöver du ett character sheet, alltså en uppsättning bilder som låser hur personen ser ut. Annars byter ansiktet utseende mellan klippen.</span></div>
         </div>
       </div>
 
@@ -257,7 +294,39 @@
           <h3>Prompten</h3>
           <p>Prompten styr både kvaliteten och rörelsen. <b>Allt du inte beskriver kommer AI:n att gissa fram</b>, och gissningarna är sällan det du ville ha.</p>
           <p>Beskriv därför tre saker separat: hur <b>karaktären</b> rör sig, hur <b>produkten</b> syns, och vad <b>kameran</b> gör. Ju mer specifik du är om rörelsen, desto mer ser klippet ut som riktig reklam.</p>
-          <div class="note"><span class="lb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1h6c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg></span><span>Kan du inte prompta finns färdiga <b>promptbibliotek</b> att utgå ifrån. Du behöver alltså inte skriva allt själv från noll.</span></div>
+          <p>Här är <b>hela prompten bakom öppningsklippet</b> i videon, ordagrant. Den är på engelska, och det är med flit: modellerna förstår engelska bäst.</p>
+          <div class="prompt">
+            <div class="prompt-bar"><span class="lbl">Prompten från videon</span><button class="prompt-copy" type="button">Kopiera</button></div>
+            <pre>10-second continuous cinematic shot.
+
+SUBJECT: The exact same man from @[Image 1](image_1). Preserve his identity with complete accuracy: same curly dark hair, full black beard, facial structure, warm skin tone, brown eyes, and facial features. Initially, he wears a light-wash blue denim button-up shirt-open, with chest pockets-over a black T-shirt, with black trousers and black shoes.
+
+SCENE: The futuristic holographic showroom from @[Image 2](image_2): warm beige walls, soft cinematic lighting, clean cream floor, and four transparent curved holographic panels surrounding him. The panels contain four linen shirts: upper-left gray, upper-right black, lower-right white, lower-left blue. Static wide camera; preserve the original composition.
+
+ACTION: The man naturally turns his torso and physically touches each glass panel with his nearest hand. Exact order: upper-left gray -> upper-right black -> lower-right white -> lower-left blue. The shirt must remain completely still until his fingertips touch the panel. Upon contact, a small white glow appears beneath his fingertips and sends a subtle circular ripple across the glass. Only after this reaction, the shirt smoothly leaves the panel, flows toward him, and realistically wraps around his torso and arms, replacing his current upper clothing. He briefly turns toward the camera and showcases each completed shirt for approximately one second, then naturally reaches for the next panel.
+
+TIMING:
+0-2.5s: touch gray, transformation, showcase.
+2.5-5s: touch black, transformation, showcase.
+5-7.5s: touch white, transformation, showcase.
+7.5-10s: touch blue, transformation, final front-facing pose.
+
+Smooth realistic body movement, clear fingertip contact, interactive holographic response, realistic flowing fabric, seamless wardrobe replacement, and one transformation at a time. No clothing movement before contact, no remote activation, no teleporting, no cuts, no camera movement, no identity changes, no extra limbs, no skipped or simultaneous transformations.</pre>
+          </div>
+          <p style="margin-top:16px">Referensbilden på miljön som prompten pekar på som <code>@[Image 2]</code>:</p>
+          <figure class="fig"><img src="images/ref-studio.webp" alt="Referensbild på det holografiska showroomet" loading="lazy"><figcaption>Referensbilden på miljön</figcaption></figure>
+          <div class="arrow-down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg> blev det här klippet</div>
+          <div class="vid wide">
+            <video src="images/hook.mp4" poster="images/hook-poster.jpg" muted loop playsinline preload="none"></video>
+          </div>
+
+          <h3 style="margin-top:34px;font-size:20px">Tre saker som gör prompten bra</h3>
+          <div class="feat">
+            <div class="row"><dt>Peka på bilderna</dt><dd>Han taggar referensbilderna direkt i texten: <code>@[Image 1]</code> för personen, <code>@[Image 2]</code> för miljön. Då vet modellen exakt vad den ska hålla fast vid.</dd></div>
+            <div class="row"><dt>Skriv en TIMING-lista</dt><dd>Sekund för sekund vad som ska hända. Utan den bestämmer modellen själv, och då hinner den ofta med hälften.</dd></div>
+            <div class="row"><dt>Säg vad som INTE får hända</dt><dd>Sista stycket är bara negationer: inga klipp, ingen kamerarörelse, inga extra armar. Det är där de flesta konstigheterna försvinner.</dd></div>
+          </div>
+          <div class="note"><span class="lb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1h6c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg></span><span>Använd prompten som <b>mall</b>, inte som facit. Byt ut personen, miljön och vad som ska hända, men behåll strukturen: SUBJECT, SCENE, ACTION, TIMING och negationerna sist.</span></div>
         </div>
       </div>
 
@@ -266,7 +335,8 @@
         <div>
           <h3>Rätt modell</h3>
           <p>Det här är det som flest missar. <b>Varje modell är bra på en specifik sak</b>, och matchar du fel uppgift med fel modell spelar det ingen roll hur bra prompten är.</p>
-          <p>Ska du göra reklam för en produkt är realism det du är ute efter, och då väljer du modellen som är byggd för det.</p>
+          <p>Ska du göra reklam för en produkt är realism det du är ute efter, och då väljer du modellen som är byggd för det. Så här ser det ut när modellen är vald, klippen i videon gjordes med <b>Seedance 2.5</b> inne i Dreamina:</p>
+          <figure class="fig"><img src="images/prompt-bar.png" alt="Promptrutan i Dreamina där Seedance 2.5 är valt" loading="lazy"><figcaption>Modellväljaren i Dreamina</figcaption></figure>
         </div>
       </div>
 
@@ -318,10 +388,9 @@
       <h3>Prompterna och resurserna läggs till här</h3>
       <p>Den här sidan är länken från videon, och jag bygger ut den med det jag lovade. Spara länken, den uppdateras på samma adress. Det som kommer:</p>
       <ul>
-        <li>Prompterna jag använde till klippen i videon, färdiga att kopiera</li>
-        <li>Promptbiblioteken jag utgår ifrån när jag inte orkar skriva själv</li>
-        <li>Hur du gör ett character sheet, steg för steg</li>
-        <li>Exempel på referensbilder som funkar, och sådana som inte gör det</li>
+        <li>Promptbiblioteken att utgå ifrån när du inte vill skriva själv</li>
+        <li>Länken till min video om hur du gör ett character sheet</li>
+        <li>Prompten bakom piké-videon</li>
       </ul>
       <div class="note green" style="margin-top:20px"><span class="lb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>Samma länk hela tiden. Du behöver inte höra av dig igen, det som kommer hamnar här.</span></div>
     </div>
@@ -385,6 +454,14 @@
       });
     });
     function fallback(t){ var ta=document.createElement('textarea'); ta.value=t; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');}catch(e){} document.body.removeChild(ta); }
+
+    var vids = document.querySelectorAll('.vid video');
+    if('IntersectionObserver' in window){
+      var vio = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){ var v=en.target; if(en.isIntersecting){ v.play().catch(function(){}); } else { try{v.pause();}catch(e){} } });
+      },{threshold:0.45});
+      vids.forEach(function(v){ vio.observe(v); });
+    } else { vids.forEach(function(v){ v.play().catch(function(){}); }); }
 
     var fc=document.getElementById('floatCta');
     if(fc){ var fcc=fc.querySelector('.fc-close'); if(fcc){ fcc.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); fc.style.display='none'; }); } }
